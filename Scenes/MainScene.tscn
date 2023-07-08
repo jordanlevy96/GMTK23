@@ -1,13 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://bysgehydeqs4n"]
+[gd_scene load_steps=10 format=3 uid="uid://bysgehydeqs4n"]
 
 [ext_resource type="PackedScene" uid="uid://dotfqvdlsevu" path="res://Scenes/Level.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dag30q7rmrvwu" path="res://Scenes/Player.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://cnk057i3pyq58" path="res://Assets/gun/shotgun1.png" id="3_86iat"]
+[ext_resource type="Texture2D" uid="uid://1fsdmtamcq60" path="res://Assets/gun/shotgun2.png" id="4_1m4yp"]
+[ext_resource type="Texture2D" uid="uid://ba03u7ihgyl3g" path="res://Assets/gun/shotgun3.png" id="5_wkv6n"]
+[ext_resource type="Texture2D" uid="uid://bn1wpdp3dajt4" path="res://Assets/gun/shotgun4.png" id="6_6bm7c"]
+[ext_resource type="Texture2D" uid="uid://ofht4qqq4soh" path="res://Assets/gun/shotgun5.png" id="7_8reou"]
+[ext_resource type="PackedScene" uid="uid://dh741m4mb8g02" path="res://Scenes/Crosshair.tscn" id="8_3rq27"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojtqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_86iat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1m4yp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wkv6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6bm7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8reou")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Level" parent="." instance=ExtResource("1")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Crosshair" parent="." instance=ExtResource("8_3rq27")]
+position = Vector2(65, 66)
 
-[node name="CharacterBody2D" parent="Camera2D" instance=ExtResource("2")]
+[node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(27, -19)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-27, 19)
+position_smoothing_enabled = true
+
+[node name="Hunter" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(192, 169)
+scale = Vector2(2.57016, 2.83826)
+sprite_frames = SubResource("SpriteFrames_ojtqx")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="finished_tweening" from="Crosshair" to="Crosshair" method="_on_finished_tweening"]
+[connection signal="timeout" from="Timer" to="Crosshair" method="_on_timer_timeout"]

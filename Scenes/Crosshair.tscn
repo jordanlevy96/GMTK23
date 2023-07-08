@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh741m4mb8g02"]
+
+[ext_resource type="Script" path="res://Scripts/Crosshair.gd" id="1_012to"]
+[ext_resource type="Texture2D" uid="uid://cvpsx4dxmjsko" path="res://Assets/Crosshairs 64/image0029.png" id="1_ixgo3"]
+
+[node name="Crosshair" type="Sprite2D"]
+texture = ExtResource("1_ixgo3")
+script = ExtResource("1_012to")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

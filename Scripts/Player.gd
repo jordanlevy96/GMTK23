@@ -6,7 +6,6 @@ const UP_DIRECTION := Vector2.UP
 @onready var sprite = $Sprite2D
 
 @export var speed := 300.0
-@export var gravity := 4500.0
 
 func _physics_process(_delta):
 	var _horizontal_direction = (
@@ -31,9 +30,9 @@ func _physics_process(_delta):
 		elif velocity.x > 0:
 			sprite.flip_h = false
 			animation.play("RunHorizontal")
-		elif velocity.y > 0:
-			animation.play("RunUp")
 		elif velocity.y < 0:
+			animation.play("RunUp")
+		elif velocity.y > 0:
 			animation.play("RunDown")
 
 	set_up_direction(UP_DIRECTION)
