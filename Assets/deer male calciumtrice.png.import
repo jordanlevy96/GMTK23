@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddhnujyam4bx5"
-path="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex"
+uid="uid://c1ajgthmlxrdc"
+path="res://.godot/imported/deer male calciumtrice.png-0483c3e8ea1324bf7e21b7721fc156e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=["res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex"]
+source_file="res://Assets/deer male calciumtrice.png"
+dest_files=["res://.godot/imported/deer male calciumtrice.png-0483c3e8ea1324bf7e21b7721fc156e2.ctex"]
 
 [params]
 
