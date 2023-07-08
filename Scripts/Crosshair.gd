@@ -7,7 +7,6 @@ var tween: Tween
 signal finished_tweening
 
 func aim():
-	print('aiming')
 	if tween:
 		print('killing tween')
 		tween.kill()
@@ -23,9 +22,4 @@ func aim():
 	tween.tween_callback(emit_signal.bind(finished_tweening.get_name()))
 
 func _on_timer_timeout():
-	print('timer')
 	aim()
-
-func _on_finished_tweening():
-	print('finished tweening')
-	#aim()
