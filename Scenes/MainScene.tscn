@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bysgehydeqs4n"]
+[gd_scene load_steps=11 format=3 uid="uid://bysgehydeqs4n"]
 
 [ext_resource type="PackedScene" uid="uid://dag30q7rmrvwu" path="res://Scenes/Player.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://cnk057i3pyq58" path="res://Assets/gun/shotgun1.png" id="3_86iat"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ofht4qqq4soh" path="res://Assets/gun/shotgun5.png" id="7_8reou"]
 [ext_resource type="PackedScene" uid="uid://cigfl2kvw0j77" path="res://Scenes/Map.tscn" id="8_1ovci"]
 [ext_resource type="PackedScene" uid="uid://dh741m4mb8g02" path="res://Scenes/Crosshair.tscn" id="8_3rq27"]
+[ext_resource type="Script" path="res://Scripts/Hunter.gd" id="9_u8f4q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ojtqx"]
 animations = [{
@@ -54,6 +55,9 @@ position_smoothing_enabled = true
 position = Vector2(192, 169)
 scale = Vector2(2.57016, 2.83826)
 sprite_frames = SubResource("SpriteFrames_ojtqx")
+script = ExtResource("9_u8f4q")
 
-[connection signal="finished_tweening" from="Crosshair" to="Crosshair" method="_on_finished_tweening"]
-[connection signal="timeout" from="CrosshairTimer" to="Crosshair" method="_on_timer_timeout"]
+[connection signal="shot" from="Crosshair" to="Player" method="_on_crosshair_shot"]
+[connection signal="shot" from="Crosshair" to="Player/Hunter" method="_on_crosshair_shot"]
+[connection signal="timeout" from="CrosshairTimer" to="Crosshair" method="_on_crosshair_timer_timeout"]
+[connection signal="animation_looped" from="Player/Hunter" to="Player/Hunter" method="_on_animation_looped"]

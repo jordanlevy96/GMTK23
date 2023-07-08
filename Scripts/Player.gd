@@ -37,3 +37,6 @@ func _physics_process(_delta):
 
 	set_up_direction(UP_DIRECTION)
 	move_and_slide()
+
+func _on_crosshair_shot():
+	pass
