@@ -44,21 +44,22 @@ func generate_chunk(pos: Vector2):
 	set_cells_terrain_connect(0, water, 0, 0, true)
 	set_cells_terrain_connect(0, land, 0, 2, true)
 
-	# var flowers := []
-	# var trees := []
-	# var cliffs := []
-	# for x in MAP_SIZE.x:
-	# 	for y in MAP_SIZE.y:
-	# 		var tile_x: int = tile_pos.x-MAP_SIZE.x/2 + x
-	# 		var tile_y: int = tile_pos.y-MAP_SIZE.y/2 + y
-	# 		var tile := Vector2i(tile_x, tile_y)
-	# 		if tile in land:
-	# 			var f = foliage.get_noise_2d(tile_x, tile_y)
-	# 			if f < TREE_CAP:
-	# 				trees.append(tile)
-	# 			elif f < FLOWER_CAP:
-	# 				flowers.append(tile)
+	var flowers := []
+	var trees := []
+	var cliffs := []
+	for x in MAP_SIZE.x:
+		for y in MAP_SIZE.y:
+			var tile_x: int = tile_pos.x-MAP_SIZE.x/2 + x
+			var tile_y: int = tile_pos.y-MAP_SIZE.y/2 + y
+			var tile := Vector2i(tile_x, tile_y)
+			if tile in land:
+				var f = foliage.get_noise_2d(tile_x, tile_y)
+				if f < TREE_CAP:
+					trees.append(tile)
+				elif f < FLOWER_CAP:
+					flowers.append(tile)
 	
+	set_cells_terrain_connect(1, flowers, 0, 3)
 	# for t in trees:
 	# 	# print('setting tree at ', t)
 	# 	var p = map_pattern(t, Vector2i(1,1), tree_patterns[0])
