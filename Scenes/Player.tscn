@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://piqh6crokbgj" path="res://Assets/deer female calciumtrice.png" id="1"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2"]
-[ext_resource type="Animation" path="res://Animations/Idle.tres" id="3"]
+[ext_resource type="Animation" uid="uid://bvdticihlcpi7" path="res://Animations/Idle.tres" id="3"]
 [ext_resource type="Animation" uid="uid://ctkhayxe7v4nw" path="res://Animations/RunDown.res" id="4_5uj0v"]
 [ext_resource type="Animation" path="res://Animations/RunHorizontal.tres" id="4_871mg"]
 

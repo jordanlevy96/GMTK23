@@ -42,6 +42,7 @@ player = NodePath("../Player")
 position = Vector2(65, 66)
 
 [node name="CrosshairTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2")]
@@ -60,4 +61,5 @@ script = ExtResource("9_u8f4q")
 [connection signal="shot" from="Crosshair" to="Player" method="_on_crosshair_shot"]
 [connection signal="shot" from="Crosshair" to="Player/Hunter" method="_on_crosshair_shot"]
 [connection signal="timeout" from="CrosshairTimer" to="Crosshair" method="_on_crosshair_timer_timeout"]
+[connection signal="ate_tile" from="Player" to="Player" method="_on_ate_tile"]
 [connection signal="animation_looped" from="Player/Hunter" to="Player/Hunter" method="_on_animation_looped"]
