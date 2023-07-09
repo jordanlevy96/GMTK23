@@ -4,6 +4,8 @@ extends Node2D
 @onready var timer := $Player/CanvasLayer/GUI/HBoxContainer/Bars/TimerLabel
 @onready var time := 0.0
 @onready var game_over_label = $Player/GameOver
+@onready var menu_button = $Player/CanvasLayer/GUI/MenuButton
+
 
 func _physics_process(delta):
 	time += delta
@@ -22,4 +24,9 @@ func _on_player_game_end():
 	# var tween = game_over_label.create_tween()
 	# tween.set_trans(Tween.TRANS_QUAD)
 	# tween.tween_property(game_over_label, "scale", 2.5, 1)
+	menu_button.visible = true
 
+
+func _on_button_pressed():
+	print('pressed')
+	get_tree().change_scene_to_file("res://Scenes/Menu.tscn")

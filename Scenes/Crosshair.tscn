@@ -6,5 +6,3 @@
 [node name="Crosshair" type="Sprite2D"]
 texture = ExtResource("1_ixgo3")
 script = ExtResource("1_012to")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

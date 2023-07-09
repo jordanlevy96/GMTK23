@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://qhv7ldw6va3t"]
+
+[ext_resource type="Texture2D" uid="uid://bm6xbrb7makcf" path="res://Assets/forest_tiles.png" id="1_p3d16"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu24s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_wu24s")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_p3d16")
+hframes = 16
+vframes = 16
+frame = 54

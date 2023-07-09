@@ -85,6 +85,11 @@ metadata/_edit_use_anchors_ = true
 offset_right = 39.0
 offset_bottom = 26.0
 
+[node name="MenuButton" type="Button" parent="Player/CanvasLayer/GUI"]
+visible = false
+layout_mode = 2
+text = "Return"
+
 [node name="GameOver" type="Label" parent="Player"]
 visible = false
 offset_left = -42.0
@@ -104,3 +109,4 @@ autoplay = true
 [connection signal="ate_tile" from="Player" to="Player" method="_on_ate_tile"]
 [connection signal="game_end" from="Player" to="." method="_on_player_game_end"]
 [connection signal="animation_looped" from="Player/Hunter" to="Player/Hunter" method="_on_animation_looped"]
+[connection signal="pressed" from="Player/CanvasLayer/GUI/MenuButton" to="." method="_on_button_pressed"]
