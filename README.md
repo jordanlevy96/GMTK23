@@ -12,3 +12,4 @@ GMTK Game Jam 2023
 - Avant Jazz Kevin MacLeod (incompetech.com)
     - Licensed under Creative Commons: By Attribution 3.0 License
     - http://creativecommons.org/licenses/by/3.0/
+- Gunshot sound - https://freesound.org/people/martian/sounds/182273/ 

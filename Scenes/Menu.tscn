@@ -170,6 +170,16 @@ layout_mode = 2
 text = "Design - Jordan Levy
 Programming - Jordan Levy
 
+Assets
+  Deer art - @Calciumtrice (OpenGameArt)
+  Forest Tileset - Reemax (OpenGameArt)
+  Rifle - Ragnar Random (OpenGameArt)
+  Crosshairs - para (OpenGameArt)
+  Music - Kevin MacLeod (incompetech.com)
+  Gunshot sound - martian (freesound)
+
+All assets are linked in itch.io
+
 Special Thanks - Kat Levy"
 
 [node name="Button" type="Button" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
