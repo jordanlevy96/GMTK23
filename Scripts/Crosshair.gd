@@ -7,7 +7,7 @@ var tween: Tween
 signal shot(position: Vector2)
 
 func _physics_process(_delta):
-	if position.distance_to(player.position) < 15:
+	if player.player_alive and position.distance_to(player.position) < 15:
 		shot.emit(position)
 
 func aim():
@@ -22,7 +22,7 @@ func aim():
 	# navigation.target_position = player.global_position
 	# var dir: Vector2 = navigation.get_next_path_position()
 	var dir: Vector2 = player.global_position
-	tween.tween_property(self, "position", dir, 2)
+	tween.tween_property(self, "position", dir, 1.5)
 
 func _on_crosshair_timer_timeout():
 	aim()

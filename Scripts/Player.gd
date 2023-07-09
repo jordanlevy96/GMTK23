@@ -12,7 +12,10 @@ const UP_DIRECTION := Vector2.UP
 signal ate_tile(position: Vector2)
 signal game_end
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	if not player_alive:
+		return
+	
 	var _horizontal_direction = (
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	)
@@ -35,7 +38,7 @@ func _physics_process(delta):
 			hunger_diff = 0.1
 			ate_tile.emit(position)
 	elif is_running:
-		hunger_diff = -0.08
+		hunger_diff = -0.2
 		if velocity.x < 0:
 			sprite.flip_h = true
 			animation.play("RunHorizontal")
@@ -56,7 +59,7 @@ func _physics_process(delta):
 
 func _on_crosshair_shot(pos: Vector2):
 	if pos.distance_to(position) < 5:
-		# TODO: add death animation
+		animation.play("Death")
 		game_over()
 
 func _on_ate_tile(_position):
@@ -64,6 +67,6 @@ func _on_ate_tile(_position):
 
 func game_over():
 	if player_alive:
-		player_alive = false
 		speed = 0
 		game_end.emit()
+		player_alive = false

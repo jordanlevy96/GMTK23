@@ -20,8 +20,8 @@ func _ready():
 	moisture = FastNoiseLite.new()
 	foliage = FastNoiseLite.new()
 	# altitude = FastNoiseLite.new()
-	moisture.seed = 100 #randi()	
-	foliage.seed = 100
+	moisture.seed = randi()	
+	foliage.seed = randi()
 	# altitude.seed = 100
 
 	# tree_patterns.append(get_pattern(0, tall_tree_coords))

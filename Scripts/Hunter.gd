@@ -4,7 +4,7 @@ extends AnimatedSprite2D
 @onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 func _on_crosshair_shot(_position: Vector2):
-	if not is_playing() and player.player_alive:
+	if not is_playing():
 		play()
 		audio_stream_player_2d.play(0.0)
 
