@@ -4,6 +4,7 @@ const UP_DIRECTION := Vector2.UP
 
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite2D
+@onready var hunger = $Hunger
 
 @export var speed := 300.0
 
@@ -20,14 +21,19 @@ func _physics_process(_delta):
 	var is_idling :=  is_zero_approx(velocity.x) and is_zero_approx(velocity.y)
 	var is_running := not is_zero_approx(velocity.x) or not is_zero_approx(velocity.y)
 
+	var hunger_diff
+
 	velocity.x = _horizontal_direction * speed
 	velocity.y = _vertical_direction * speed
 
 	if is_idling:
+		hunger_diff = 0
 		animation.play("Idle")
 		if animation.current_animation_position > 1.4: # time of animation when the deer is eating
+			hunger_diff = 0.1
 			ate_tile.emit(position)
 	elif is_running:
+		hunger_diff = -0.08
 		if velocity.x < 0:
 			sprite.flip_h = true
 			animation.play("RunHorizontal")
@@ -39,6 +45,8 @@ func _physics_process(_delta):
 		elif velocity.y > 0:
 			animation.play("RunDown")
 
+	hunger.value += hunger_diff
+
 	set_up_direction(UP_DIRECTION)
 	move_and_slide()
 
@@ -47,4 +55,4 @@ func _on_crosshair_shot(position: Vector2):
 		print('shot!')
 
 func _on_ate_tile(_position):
-	print('eating')
+	hunger.value += 0.1

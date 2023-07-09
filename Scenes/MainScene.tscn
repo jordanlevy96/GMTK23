@@ -48,15 +48,23 @@ autostart = true
 [node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(27, -19)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-27, 19)
-position_smoothing_enabled = true
-
 [node name="Hunter" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(192, 169)
 scale = Vector2(2.57016, 2.83826)
 sprite_frames = SubResource("SpriteFrames_ojtqx")
 script = ExtResource("9_u8f4q")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-27, 19)
+position_smoothing_enabled = true
+
+[node name="Hunger" type="ProgressBar" parent="Player"]
+offset_left = -55.0
+offset_top = 22.0
+offset_right = 53.0
+offset_bottom = 49.0
+value = 80.0
+show_percentage = false
 
 [connection signal="shot" from="Crosshair" to="Player" method="_on_crosshair_shot"]
 [connection signal="shot" from="Crosshair" to="Player/Hunter" method="_on_crosshair_shot"]
