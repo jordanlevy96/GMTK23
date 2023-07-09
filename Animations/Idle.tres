@@ -2,7 +2,7 @@
 
 [resource]
 resource_name = "Idle"
-length = 2.4
+length = 3.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

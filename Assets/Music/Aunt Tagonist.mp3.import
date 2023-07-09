@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://by8u3refirlg8"
+path="res://.godot/imported/Aunt Tagonist.mp3-054c9ca152adb5d8a67e9cb69712e326.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Aunt Tagonist.mp3"
+dest_files=["res://.godot/imported/Aunt Tagonist.mp3-054c9ca152adb5d8a67e9cb69712e326.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

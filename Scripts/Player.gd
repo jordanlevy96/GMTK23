@@ -2,15 +2,17 @@ extends CharacterBody2D
 
 const UP_DIRECTION := Vector2.UP
 
-@onready var animation = $AnimationPlayer
-@onready var sprite = $Sprite2D
-@onready var hunger = $Hunger
+@onready var animation := $AnimationPlayer
+@onready var sprite := $Sprite2D
+@onready var hunger := $Hunger
+@onready var player_alive := true
 
 @export var speed := 300.0
 
 signal ate_tile(position: Vector2)
+signal game_end
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var _horizontal_direction = (
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	)
@@ -46,13 +48,22 @@ func _physics_process(_delta):
 			animation.play("RunDown")
 
 	hunger.value += hunger_diff
+	if (is_zero_approx(hunger.value)):
+		game_over()
 
 	set_up_direction(UP_DIRECTION)
 	move_and_slide()
 
-func _on_crosshair_shot(position: Vector2):
-	if position.distance_to(self.position) < 5:
-		print('shot!')
+func _on_crosshair_shot(pos: Vector2):
+	if pos.distance_to(position) < 5:
+		# TODO: add death animation
+		game_over()
 
 func _on_ate_tile(_position):
 	hunger.value += 0.1
+
+func game_over():
+	if player_alive:
+		player_alive = false
+		speed = 0
+		game_end.emit()

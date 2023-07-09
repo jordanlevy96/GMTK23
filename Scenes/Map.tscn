@@ -783,4 +783,12 @@ pattern_5 = SubResource("TileMapPattern_uvslx")
 [node name="Map" type="TileMap"]
 tile_set = SubResource("1")
 format = 2
+layer_0/name = "Base"
+layer_1/name = "Obstacles"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_nlkq0")

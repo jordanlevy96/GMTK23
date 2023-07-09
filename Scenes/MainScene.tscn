@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bysgehydeqs4n"]
+[gd_scene load_steps=13 format=3 uid="uid://bysgehydeqs4n"]
 
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_ely0o"]
 [ext_resource type="PackedScene" uid="uid://dag30q7rmrvwu" path="res://Scenes/Player.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://cnk057i3pyq58" path="res://Assets/gun/shotgun1.png" id="3_86iat"]
 [ext_resource type="Texture2D" uid="uid://1fsdmtamcq60" path="res://Assets/gun/shotgun2.png" id="4_1m4yp"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cigfl2kvw0j77" path="res://Scenes/Map.tscn" id="8_1ovci"]
 [ext_resource type="PackedScene" uid="uid://dh741m4mb8g02" path="res://Scenes/Crosshair.tscn" id="8_3rq27"]
 [ext_resource type="Script" path="res://Scripts/Hunter.gd" id="9_u8f4q"]
+[ext_resource type="PackedScene" uid="uid://bwifpf5m2tk06" path="res://Scenes/GUI.tscn" id="11_pxu2m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ojtqx"]
 animations = [{
@@ -33,13 +35,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_ely0o")
 
 [node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_1ovci")]
 player = NodePath("../Player")
 
-[node name="Crosshair" parent="." instance=ExtResource("8_3rq27")]
+[node name="Crosshair" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_3rq27")]
 position = Vector2(65, 66)
+player = NodePath("../Player")
 
 [node name="CrosshairTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -65,9 +69,25 @@ offset_right = 53.0
 offset_bottom = 49.0
 value = 80.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+
+[node name="GUI" parent="Player/CanvasLayer" instance=ExtResource("11_pxu2m")]
+offset_right = 39.0
+offset_bottom = 26.0
+
+[node name="GameOver" type="Label" parent="Player"]
+visible = false
+offset_left = -42.0
+offset_top = -68.0
+offset_right = 45.0
+offset_bottom = -42.0
+text = "Game Over"
 
 [connection signal="shot" from="Crosshair" to="Player" method="_on_crosshair_shot"]
 [connection signal="shot" from="Crosshair" to="Player/Hunter" method="_on_crosshair_shot"]
 [connection signal="timeout" from="CrosshairTimer" to="Crosshair" method="_on_crosshair_timer_timeout"]
 [connection signal="ate_tile" from="Player" to="Player" method="_on_ate_tile"]
+[connection signal="game_end" from="Player" to="." method="_on_player_game_end"]
 [connection signal="animation_looped" from="Player/Hunter" to="Player/Hunter" method="_on_animation_looped"]

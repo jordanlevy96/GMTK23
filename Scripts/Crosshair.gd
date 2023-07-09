@@ -1,7 +1,7 @@
 extends Sprite2D
 
-@onready var player := get_owner().get_node("Player")
-@onready var navigation := $NavigationAgent2D
+@export var player: CharacterBody2D
+# @onready var navigation := $NavigationAgent2D
 var tween: Tween
 
 signal shot(position: Vector2)
@@ -19,7 +19,7 @@ func aim():
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT_IN)
 
-	navigation.target_position = player.global_position
+	# navigation.target_position = player.global_position
 	# var dir: Vector2 = navigation.get_next_path_position()
 	var dir: Vector2 = player.global_position
 	tween.tween_property(self, "position", dir, 2)
