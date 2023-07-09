@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://4vxxjdbqlp58"]
+[gd_scene load_steps=7 format=3 uid="uid://4vxxjdbqlp58"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_rjw3h"]
 [ext_resource type="Texture2D" uid="uid://gd07jg2fxf48" path="res://Assets/Tree Background/parallax-forest-back-trees.png" id="2_0cg53"]
+[ext_resource type="Texture2D" uid="uid://beuo2pwtsc45l" path="res://Assets/Tree Background/parallax-forest-middle-trees.png" id="3_lrjrl"]
+[ext_resource type="Texture2D" uid="uid://by8kruuvctwus" path="res://Assets/Tree Background/parallax-forest-front-trees.png" id="4_lnjqt"]
+[ext_resource type="Texture2D" uid="uid://c1ajgthmlxrdc" path="res://Assets/deer male calciumtrice.png" id="5_4p0mb"]
+[ext_resource type="Texture2D" uid="uid://piqh6crokbgj" path="res://Assets/deer female calciumtrice.png" id="5_shcpu"]
 
 [node name="Menu" type="Node"]
 
@@ -15,6 +19,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_0cg53")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lrjrl")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_lnjqt")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_lnjqt")
+
+[node name="Male Deer" type="Sprite2D" parent="CanvasLayer/Background"]
+position = Vector2(1011, 508)
+scale = Vector2(5, 5)
+texture = ExtResource("5_4p0mb")
+flip_h = true
+hframes = 5
+vframes = 5
+
+[node name="Female Deer" type="Sprite2D" parent="CanvasLayer/Background"]
+position = Vector2(157, 527)
+scale = Vector2(5, 5)
+texture = ExtResource("5_shcpu")
+hframes = 5
+vframes = 5
 
 [node name="Main" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -60,6 +106,11 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 text = "Play"
+
+[node name="Instructions" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Instructions"
 
 [node name="Credits" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -124,7 +175,63 @@ Special Thanks - Kat Levy"
 layout_mode = 2
 text = "Back"
 
+[node name="Instructions" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Instructions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Instructions/CenterContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Instructions/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Instructions/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Instructions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Instructions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instructions" type="Label" parent="CanvasLayer/Instructions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Survive as long as possible!
+
+A hunter is trying to shoot you and will not rest until you are dead. Evade attacks and keep your hunger meter full to stay alive.
+
+Use WASD to move. You will eat automatically when not moving."
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Instructions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="CanvasLayer" method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Instructions" to="CanvasLayer" method="_on_instructions_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="CanvasLayer" method="_on_credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="CanvasLayer" method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer" method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/Instructions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer" method="_on_instructions_pressed"]

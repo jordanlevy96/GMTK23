@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var main = $Main
 @onready var credits = $Credits
+@onready var instructions = $Instructions
 
 
 func _on_play_pressed():
@@ -13,3 +14,8 @@ func _on_credits_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_instructions_pressed():
+	main.visible = not main.visible
+	instructions.visible = not instructions.visible
