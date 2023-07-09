@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4vxxjdbqlp58"]
+[gd_scene load_steps=8 format=3 uid="uid://4vxxjdbqlp58"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_rjw3h"]
 [ext_resource type="Texture2D" uid="uid://gd07jg2fxf48" path="res://Assets/Tree Background/parallax-forest-back-trees.png" id="2_0cg53"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://by8kruuvctwus" path="res://Assets/Tree Background/parallax-forest-front-trees.png" id="4_lnjqt"]
 [ext_resource type="Texture2D" uid="uid://c1ajgthmlxrdc" path="res://Assets/deer male calciumtrice.png" id="5_4p0mb"]
 [ext_resource type="Texture2D" uid="uid://piqh6crokbgj" path="res://Assets/deer female calciumtrice.png" id="5_shcpu"]
+[ext_resource type="AudioStream" uid="uid://due4xb6s0vp2d" path="res://Assets/Music/Avant Jazz.mp3" id="7_1p8sp"]
 
 [node name="Menu" type="Node"]
 
@@ -228,6 +229,10 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="CanvasLayer/Instructions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_1p8sp")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="CanvasLayer" method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Instructions" to="CanvasLayer" method="_on_instructions_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bysgehydeqs4n"]
+[gd_scene load_steps=15 format=3 uid="uid://bysgehydeqs4n"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_ely0o"]
 [ext_resource type="PackedScene" uid="uid://dag30q7rmrvwu" path="res://Scenes/Player.tscn" id="2"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dh741m4mb8g02" path="res://Scenes/Crosshair.tscn" id="8_3rq27"]
 [ext_resource type="Script" path="res://Scripts/Hunter.gd" id="9_u8f4q"]
 [ext_resource type="PackedScene" uid="uid://bwifpf5m2tk06" path="res://Scenes/GUI.tscn" id="11_pxu2m"]
+[ext_resource type="AudioStream" uid="uid://cuudhdjriqt83" path="res://Assets/SFX/shot.wav" id="11_vngqw"]
+[ext_resource type="AudioStream" uid="uid://by8u3refirlg8" path="res://Assets/Music/Aunt Tagonist.mp3" id="12_mn7fm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ojtqx"]
 animations = [{
@@ -60,6 +62,10 @@ scale = Vector2(2.57016, 2.83826)
 sprite_frames = SubResource("SpriteFrames_ojtqx")
 script = ExtResource("9_u8f4q")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player/Hunter"]
+stream = ExtResource("11_vngqw")
+volume_db = -10.551
+
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-27, 19)
 position_smoothing_enabled = true
@@ -86,6 +92,11 @@ offset_top = -68.0
 offset_right = 45.0
 offset_bottom = -42.0
 text = "Game Over"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-27, 19)
+stream = ExtResource("12_mn7fm")
+autoplay = true
 
 [connection signal="shot" from="Crosshair" to="Player" method="_on_crosshair_shot"]
 [connection signal="shot" from="Crosshair" to="Player/Hunter" method="_on_crosshair_shot"]
